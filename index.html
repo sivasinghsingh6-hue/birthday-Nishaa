@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Trishika!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+        
+        .handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Floating Animation for Balloons */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        .floating-delay-1 { animation-delay: 1s; }
+        .floating-delay-2 { animation-delay: 2s; }
+
+        /* Gift Box Shake Animation */
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .shake:hover {
+            animation: shake 0.5s infinite;
+            cursor: pointer;
+        }
+
+        /* Hidden Utility */
+        .hidden-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+            pointer-events: none;
+            display: none; /* Physically hide initially */
+        }
+
+        .visible-content {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            display: block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ec4899; 
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-800 relative selection:bg-pink-200">
+
+    <!-- Screen 1: The Surprise Box -->
+    <div id="intro-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-pink-50 transition-all duration-1000 ease-in-out">
+        <div class="absolute inset-0 overflow-hidden opacity-30">
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-pink-200 rounded-full blur-xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-32 h-32 bg-purple-200 rounded-full blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-pink-500 mb-8 tracking-widest text-center px-4 animate-bounce">
+            Hey Trishika!
+        </h1>
+        <p class="text-gray-500 mb-8 text-lg text-center px-4">
+            I have a little surprise for you. Tap the box to open it!
+        </p>
+
+        <!-- Interactive Gift Box -->
+        <div id="gift-box" onclick="openGift()" class="relative w-40 h-40 md:w-56 md:h-56 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl shadow-2xl flex items-center justify-center shake transform transition-transform hover:scale-105 active:scale-95">
+            <!-- Ribbon Vertical -->
+            <div class="absolute w-8 h-full bg-pink-300 bg-opacity-50"></div>
+            <!-- Ribbon Horizontal -->
+            <div class="absolute h-8 w-full bg-pink-300 bg-opacity-50"></div>
+            <!-- Bow -->
+            <div class="absolute -top-6 text-pink-500">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2C12,2 16,0 16,4C16,8 12,10 12,10C12,10 8,8 8,4C8,0 12,2 12,2M12,10C12,10 15,12 18,12C21,12 22,15 20,18C18,21 15,20 12,18C9,20 6,21 4,18C2,15 3,12 6,12C9,12 12,10 12,10Z" />
+                </svg>
+            </div>
+            <div class="z-10 text-white font-bold text-xl tracking-widest">OPEN ME</div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Main Birthday Content (Hidden Initially) -->
+    <main id="main-content" class="hidden-content min-h-screen pb-12">
+        
+        <!-- Hero Section -->
+        <header class="relative w-full h-screen min-h-[600px] flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1530103862676-de3c9a59af57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div class="relative z-10 text-center text-white px-4">
+                <p class="text-xl md:text-3xl mb-4 font-light tracking-widest uppercase">It's a special day</p>
+                <h1 class="handwriting text-6xl md:text-8xl lg:text-9xl mb-6 text-pink-300 drop-shadow-lg">
+                    Happy Birthday <br> <span class="text-white">Trishika</span>
+                </h1>
+                <p class="max-w-xl mx-auto text-lg md:text-xl font-light opacity-90 leading-relaxed">
+                    Celebrating the most amazing person in the world today.
+                </p>
+                <button onclick="scrollToMessage()" class="mt-10 px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-pink-500/50">
+                    See Your Message ↓
+                </button>
+            </div>
+            
+            <!-- Floating Balloons Decorations -->
+            <div class="absolute top-10 left-10 md:left-20 text-5xl floating">🎈</div>
+            <div class="absolute top-40 right-10 md:right-32 text-6xl floating floating-delay-1">✨</div>
+            <div class="absolute bottom-20 left-1/4 text-4xl floating floating-delay-2">🎂</div>
+        </header>
+
+        <!-- Message Section -->
+        <section id="message-section" class="py-20 px-4 md:px-0">
+            <div class="max-w-3xl mx-auto glass-card rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+                    To My Dearest Trishika ❤️
+                </h2>
+                
+                <div class="prose prose-lg mx-auto text-gray-600 leading-relaxed space-y-4">
+                    <p>
+                        Happy Birthday! 🎉
+                    </p>
+                    <p>
+                        I wanted to do something a little different this year to remind you just how special you are to me. You bring so much light, laughter, and happiness into my life, and I am incredibly lucky to know you.
+                    </p>
+                    <p>
+                        May this year bring you as much joy as you give to everyone around you. I hope all your dreams, big and small, come true.
+                    </p>
+                    <p>
+                        Here's to another year of making memories together, laughing at silly jokes, and supporting each other through everything.
+                    </p>
+                    <p class="handwriting text-3xl text-pink-500 text-right mt-8">
+                        With all my love,<br>
+                        [Your Name]
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery (Mockup) -->
+        <section class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">A Few Things I Love About You</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-pink-50 rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="h-48 bg-pink-200 flex items-center justify-center text-6xl">
+                            😄
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2 text-pink-600">Your Smile</h3>
+                            <p class="text-gray-600">It literally lights up the entire room and makes my day instantly better.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-purple-50 rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="h-48 bg-purple-200 flex items-center justify-center text-6xl">
+                            💖
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2 text-purple-600">Your Kindness</h3>
+                            <p class="text-gray-600">The way you care for people around you is truly inspiring.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-indigo-50 rounded-2xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="h-48 bg-indigo-200 flex items-center justify-center text-6xl">
+                            🧠
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2 text-indigo-600">Your Mind</h3>
+                            <p class="text-gray-600">Smart, funny, and witty. I could talk to you for hours and never get bored.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Candles Section -->
+        <section class="py-20 bg-gradient-to-b from-white to-pink-100 text-center">
+            <h2 class="text-3xl font-bold mb-8">Make a Wish!</h2>
+            <p class="text-gray-600 mb-8">Click the cake to blow out the candles 🎂</p>
+            
+            <div class="relative inline-block cursor-pointer group" onclick="blowCandles()">
+                <div class="text-[150px] leading-none transition-transform transform group-hover:scale-110 duration-300 select-none">
+                    🎂
+                </div>
+                <!-- Flame animation overlay (simplified) -->
+                <div id="flame" class="absolute top-10 left-1/2 -translate-x-1/2 text-4xl animate-pulse opacity-80 text-orange-500">
+                    🔥🔥🔥
+                </div>
+            </div>
+            <p id="wish-text" class="mt-8 text-xl text-pink-600 font-semibold opacity-0 transition-opacity duration-1000">
+                Yay! May all your wishes come true! ✨
+            </p>
+        </section>
+
+        <footer class="bg-pink-500 text-white py-8 text-center">
+            <p class="handwriting text-2xl">Happy Birthday Trishika!</p>
+            <p class="text-sm mt-2 opacity-80">Made with ❤️ just for you.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Confetti Configuration
+        function fireConfetti() {
+            var count = 200;
+            var defaults = {
+                origin: { y: 0.7 }
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+            });
+            fire(0.2, {
+                spread: 60,
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+            });
+        }
+
+        // Open Gift Function
+        function openGift() {
+            const intro = document.getElementById('intro-screen');
+            const main = document.getElementById('main-content');
+            
+            // 1. Play Confetti
+            fireConfetti();
+            
+            // Keep firing small bursts for celebration
+            let duration = 3 * 1000;
+            let end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ffc0cb', '#ff69b4', '#800080']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ffc0cb', '#ff69b4', '#800080']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // 2. Transition Screens
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+                main.style.display = 'block';
+                // Small delay to allow display block to apply before opacity transition
+                setTimeout(() => {
+                    main.classList.remove('hidden-content');
+                    main.classList.add('visible-content');
+                }, 50);
+            }, 1000);
+        }
+
+        // Scroll helper
+        function scrollToMessage() {
+            document.getElementById('message-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Candle Interaction
+        function blowCandles() {
+            const flame = document.getElementById('flame');
+            const wishText = document.getElementById('wish-text');
+            
+            if (flame.style.opacity !== '0') {
+                flame.style.transition = 'opacity 0.5s';
+                flame.style.opacity = '0';
+                
+                wishText.style.opacity = '1';
+                fireConfetti();
+            }
+        }
+    </script>
+</body>
+  </html>
