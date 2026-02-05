@@ -1,257 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Nisha 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Nishaa 💖</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff758c;
+            --dark-bg: #0b090a;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-gold: #f5ebe0;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{
-background:radial-gradient(circle at top,#ff4d6d,#2b0033,#000);
-color:#fff;
-overflow:hidden
-}
-section{
-width:100vw;
-height:100vh;
-display:none;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:20px
-}
-section.active{display:flex}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-header{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:10px 15px;
-font-size:13px;
-z-index:99
-}
-header span{opacity:.8}
+        body {
+            background: linear-gradient(135deg, #0b090a 0%, #161a1d 50%, #0b090a 100%);
+            color: var(--text-gold);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            touch-action: manipulation;
+        }
 
-button{
-margin-top:20px;
-padding:14px 30px;
-border:none;
-border-radius:40px;
-background:linear-gradient(45deg,#ff5fa2,#ff2e63);
-color:white;
-font-size:16px;
-box-shadow:0 0 15px #ff5fa2;
-transition:.3s
-}
-button:active{transform:scale(.95)}
+        /* --- Header Decorations --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-.teddy{font-size:90px;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+        .insta { color: var(--primary); text-decoration: none; font-weight: bold; }
 
-.heart{
-position:absolute;
-color:pink;
-animation:float 5s linear infinite;
-font-size:20px
-}
-@keyframes float{
-0%{transform:translateY(100vh);opacity:0}
-100%{transform:translateY(-10vh);opacity:1}
-}
+        .flags {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 999;
+            pointer-events: none;
+        }
+        .flag {
+            width: 25px;
+            height: 35px;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            animation: flagSwing 2s infinite ease-in-out;
+            transform-origin: top;
+        }
+        @keyframes flagSwing { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
 
-.card{
-background:#fff;
-color:#000;
-border-radius:20px;
-padding:25px;
-max-width:340px;
-box-shadow:0 0 25px rgba(255,105,180,.7);
-animation:fade 1s
-}
-@keyframes fade{from{opacity:0;transform:scale(.9)}to{opacity:1}}
+        /* --- Global Layout --- */
+        section {
+            height: 100vh;
+            width: 100vw;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            z-index: 5;
+        }
 
-.slider{
-display:flex;
-gap:15px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-width:100%
-}
-.slide{
-min-width:260px;
-height:350px;
-background:linear-gradient(#ffb3c6,#fff);
-border-radius:20px;
-scroll-snap-align:center;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-color:#ff2e63
-}
+        section.active { display: flex; animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
 
-.balloon{
-width:70px;height:90px;
-border-radius:50%;
-background:red;
-margin:10px;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:30px
-}
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-#catchGame{
-position:relative;
-width:100%;
-height:60vh;
-overflow:hidden
-}
-.catchHeart{
-position:absolute;
-font-size:30px;
-animation:drop 3s linear
-}
-@keyframes drop{
-from{top:-40px}
-to{top:100%}
-}
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 350px;
+            width: 100%;
+        }
 
-.music button{margin:8px}
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:active { transform: scale(0.92); }
 
-footer{
-position:absolute;
-bottom:10px;
-font-size:13px;
-opacity:.8
-}
-</style>
+        /* --- Animations & Items --- */
+        .teddy { font-size: 90px; margin-bottom: 20px; animation: teddyWave 3s infinite; }
+        @keyframes teddyWave { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg) translateY(-10px); } }
+
+        .cake-box { font-size: 110px; position: relative; cursor: pointer; }
+        .candle { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 30px; }
+        .flame { animation: glow 0.5s infinite alternate; }
+        @keyframes glow { from { opacity: 0.7; filter: drop-shadow(0 0 5px orange); } to { opacity: 1; filter: drop-shadow(0 0 15px yellow); } }
+
+        .balloon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; }
+        .bal { font-size: 60px; cursor: pointer; transition: 0.3s; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); }
+        
+        .memory-game { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .tile { width: 85px; height: 85px; background: var(--glass); border-radius: 15px; border: 1px solid var(--glass-border); 
+                display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; }
+        .tile.flipped { background: var(--primary); border-color: white; animation: flip 0.4s; }
+        @keyframes flip { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } }
+
+        .music-item { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin: 8px 0; 
+                      display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+        /* --- Background FX --- */
+        #bg-fx { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .floating-heart { position: absolute; color: var(--primary); animation: floatUp 5s linear forwards; opacity: 0.7; }
+        @keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+    </style>
 </head>
-
 <body>
 
-<header>
-<span>📸 @your_instagram_username</span>
-<span>Made with ❤️ by Sivasingh</span>
-</header>
+    <div id="bg-fx"></div>
 
-<section id="s1" class="active">
-<div class="teddy">🧸</div>
-<h1>A Cutiepie Was Born Today 💖</h1>
-<p>Yes, it’s YOU Nisha! A little surprise awaits…</p>
-<button onclick="next()">🎁 Start the Surprise</button>
-</section>
+    <header>
+        <a href="#" class="insta">📸 @sms1708</a>
+        <div>Made with ❤️ by Sivasingh</div>
+    </header>
 
-<section id="s2">
-<h1>You are a Cutiee 💕</h1>
-<button onclick="next()">Next →</button>
-</section>
+    <div class="flags" id="flags"></div>
 
-<section id="s3">
-<h1>🎂 Happy Birthday Nisha 🎉</h1>
-<p>Make a wish & blow the candle</p>
-<button onclick="next()">Blow the Candle</button>
-<audio id="bgm" src="birthday.mp3" loop></audio>
-</section>
+    <section id="s1" class="active">
+        <div class="teddy">🧸</div>
+        <div class="glass-card">
+            <h1>A Cutiepie Was Born Today 💖</h1>
+            <p style="margin-top:10px; opacity:0.8;">Yes, it’s YOU Nishaa! <br>A little surprise awaits…</p>
+            <button class="btn" onclick="next(2)">🎁 Start the Surprise</button>
+        </div>
+    </section>
 
-<section id="s4">
-<h2>Pop all balloons 🎈</h2>
-<div>
-<div class="balloon" onclick="pop(this)">🎈</div>
-<div class="balloon" onclick="pop(this)">🎈</div>
-<div class="balloon" onclick="pop(this)">🎈</div>
-<div class="balloon" onclick="pop(this)">🎈</div>
-</div>
-</section>
+    <section id="s2">
+        <div class="glass-card">
+            <h1 style="font-size: 4rem;">💕</h1>
+            <h2>You are a Cutiee</h2>
+            <p style="margin: 15px 0;">Sending a million hearts your way!</p>
+            <button class="btn" onclick="burstHearts(); next(3)">Next →</button>
+        </div>
+    </section>
 
-<section id="s5">
-<div class="card">
-<h3>For You 💌</h3>
-<p>
-Lots of love for you Nisha ❤️<br>
-May your smile always shine brighter than the stars.<br>
-Stay happy, stay blessed.
-</p>
-<button onclick="next()">Next</button>
-</div>
-</section>
+    <section id="s3">
+        <div class="glass-card">
+            <div class="cake-box" id="cake" onclick="blowOut()">
+                <div class="candle" id="cndl"><span class="flame">🔥</span>🕯️</div>
+                🎂
+            </div>
+            <h2 id="cakeText" style="margin-top:20px;">Happy Birthday Nishaa 🎉</h2>
+            <p id="cakeSub">Blow the candle to make a wish!</p>
+            <button class="btn" id="cakeNext" style="display:none" onclick="next(4)">Wish Made ❤️</button>
+        </div>
+    </section>
 
-<section id="s6">
-<h2>Some Sweet Moments 💞</h2>
-<div class="slider">
-<div class="slide">💑</div>
-<div class="slide">💖</div>
-<div class="slide">🌹</div>
-</div>
-<button onclick="next()">Next</button>
-</section>
+    <section id="s4">
+        <h2>Pop all 4 balloons! 🎈</h2>
+        <div class="balloon-grid">
+            <div class="bal" onclick="pop(this)">🎈</div>
+            <div class="bal" onclick="pop(this)">🎈</div>
+            <div class="bal" onclick="pop(this)">🎈</div>
+            <div class="bal" onclick="pop(this)">🎈</div>
+        </div>
+    </section>
 
-<section id="s7">
-<h2>Catch My Heart 💘</h2>
-<p>Tap hearts before they fall</p>
-<div id="catchGame"></div>
-<button onclick="next()">Next</button>
-</section>
+    <section id="s5">
+        <div class="glass-card" style="background: #fff; color: #111;">
+            <h2 style="color: var(--primary);">For You, Ritika ❤️</h2>
+            <p style="margin-top:15px; line-height:1.6; font-style: italic;">
+                "May your smile always shine brighter than the stars. <br>
+                Stay happy, stay blessed, and stay as amazing as you are."
+            </p>
+            <button class="btn" onclick="next(6)">Replay Message 💖</button>
+        </div>
+    </section>
 
-<section id="s8">
-<h2>Music for You 🎶</h2>
-<div class="music">
-<button onclick="playSong(0)">Song 1</button>
-<button onclick="playSong(1)">Song 2</button>
-<button onclick="playSong(2)">Song 3</button>
-</div>
-<audio class="song" src="song1.mp3"></audio>
-<audio class="song" src="song2.mp3"></audio>
-<audio class="song" src="song3.mp3"></audio>
-<button onclick="next()">Next</button>
-</section>
+    <section id="s6">
+        <h2 style="margin-bottom:20px;">Sweet Moments 💞</h2>
+        <div style="display: flex; gap: 15px; overflow-x: auto; width: 100%; padding: 10px;">
+            <div class="glass-card" style="min-width:260px;">👩‍❤️‍👨<br>Always Together</div>
+            <div class="glass-card" style="min-width:260px;">✨<br>Magical Times</div>
+            <div class="glass-card" style="min-width:260px;">🌹<br>Pure Love</div>
+        </div>
+        <button class="btn" onclick="next(7)">Play Game 🎮</button>
+    </section>
 
-<section id="s9">
-<div class="teddy">🧸</div>
-<h2>Once again, Happy Birthday Nisha 💖</h2>
-<p>Hope you loved this surprise!</p>
-<button onclick="location.reload()">Replay Website</button>
-<footer>Made with love by Sivasingh</footer>
-</section>
+    <section id="s7">
+        <h3>Match the Pairs</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 10px;">Moves: <span id="mv">0</span></p>
+        <div class="memory-game" id="grid"></div>
+        <button class="btn" id="memNext" style="display:none" onclick="next(8)">Next 🎵</button>
+    </section>
 
-<script>
-let current=1
-function next(){
-document.getElementById("bgm").play()
-document.querySelector("section.active").classList.remove("active")
-current++
-document.getElementById("s"+current).classList.add("active")
-}
+    <section id="s8">
+        <div class="glass-card">
+            <h3>Romantic Playlist 🎵</h3>
+            <div class="music-item">
+                <span>Nishaa's Song 1</span>
+                <button onclick="play(1, this)" style="border:none; background:none; color:var(--primary); font-weight:bold;">PLAY</button>
+            </div>
+            <div class="music-item">
+                <span>Happy B'Day Tune</span>
+                <button onclick="play(2, this)" style="border:none; background:none; color:var(--primary); font-weight:bold;">PLAY</button>
+            </div>
+            <button class="btn" onclick="next(9)">Final Message 💌</button>
+        </div>
+    </section>
 
-let popped=0
-function pop(el){
-el.style.visibility="hidden"
-popped++
-if(popped==4)next()
-}
+    <section id="s9">
+        <div class="teddy">👋🧸</div>
+        <h1>Happy Birthday Nishaa 💖</h1>
+        <p>You make the world a better place!</p>
+        <button class="btn" onclick="location.reload()">Replay Website 🔄</button>
+    </section>
 
-function spawnHeart(){
-let h=document.createElement("div")
-h.className="catchHeart"
-h.innerHTML="💖"
-h.style.left=Math.random()*90+"%"
-h.onclick=()=>h.remove()
-document.getElementById("catchGame").appendChild(h)
-setTimeout(()=>h.remove(),3000)
-}
-setInterval(spawnHeart,700)
+    <audio id="a1" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="a2" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
 
-let songs=document.querySelectorAll(".song")
-function playSong(i){
-songs.forEach(s=>{s.pause();s.currentTime=0})
-songs[i].play()
-}
-</script>
+    <script>
+        // Flags Init
+        const flagBox = document.getElementById('flags');
+        for(let i=0; i<12; i++){
+            const f = document.createElement('div');
+            f.className = 'flag';
+            f.style.background = i % 2 == 0 ? '#ff4d6d' : '#800e13';
+            flagBox.appendChild(f);
+        }
 
+        // Navigation
+        function next(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + id).classList.add('active');
+        }
+
+        // FX: Hearts
+        function spawnHeart() {
+            const h = document.createElement('div');
+            h.className = 'floating-heart';
+            h.innerHTML = '💖';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.bottom = '-50px';
+            h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.getElementById('bg-fx').appendChild(h);
+            setTimeout(() => h.remove(), 5000);
+        }
+        setInterval(spawnHeart, 800);
+
+        function burstHearts() {
+            for(let i=0; i<30; i++) setTimeout(spawnHeart, i * 50);
+        }
+
+        // Cake
+        function blowOut() {
+            document.getElementById('cndl').style.opacity = '0';
+            document.getElementById('cakeText').innerText = 'Make a wish, Ritika! 🎂';
+            document.getElementById('cakeSub').innerText = 'The universe is listening...';
+            document.getElementById('cakeNext').style.display = 'inline-block';
+            burstHearts();
+        }
+
+        // Balloon Pop
+        let popped = 0;
+        function pop(e) {
+            e.innerText = '💥';
+            e.style.pointerEvents = 'none';
+            popped++;
+            if(popped === 4) {
+                setTimeout(() => { burstHearts(); next(5); }, 600);
+            }
+        }
+
+        // Memory Game Logic
+        const icons = ['💖','💖','🎁','🎁','🌹','🌹','✨','✨','💎','💎','🌈','🌈'];
+        let shuffled = icons.sort(() => Math.random() - 0.5);
+        let flipped = [];
+        let matches = 0;
+        let moves = 0;
+        const grid = document.getElementById('grid');
+
+        shuffled.forEach((icon, i) => {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.dataset.val = icon;
+            tile.onclick = () => {
+                if(flipped.length < 2 && !tile.classList.contains('flipped')) {
+                    tile.innerText = icon;
+                    tile.classList.add('flipped');
+                    flipped.push(tile);
+                    if(flipped.length === 2) {
+                        moves++;
+                        document.getElementById('mv').innerText = moves;
+                        if(flipped[0].dataset.val === flipped[1].dataset.val) {
+                            matches += 2;
+                            flipped = [];
+                            if(matches === icons.length) document.getElementById('memNext').style.display = 'block';
+                        } else {
+                            setTimeout(() => {
+                                flipped.forEach(t => { t.innerText = ''; t.classList.remove('flipped'); });
+                                flipped = [];
+                            }, 700);
+                        }
+                    }
+                }
+            };
+            grid.appendChild(tile);
+        });
+
+        // Music Logic
+        let activeTrack = null;
+        function play(id, btn) {
+            const track = document.getElementById('a' + id);
+            if(activeTrack && activeTrack !== track) {
+                activeTrack.pause();
+                document.querySelectorAll('.music-item button').forEach(b => b.innerText = 'PLAY');
+            }
+            if(track.paused) {
+                track.play();
+                btn.innerText = 'PAUSE';
+                activeTrack = track;
+            } else {
+                track.pause();
+                btn.innerText = 'PLAY';
+            }
+        }
+    </script>
 </body>
 </html>
