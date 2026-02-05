@@ -2,225 +2,256 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Nisha 💖</title>
+
 <style>
-:root {
---bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
---pink: #ff758c;
---gold: #ffd700;
---white: #fff5f7;
---accent: #ff007f;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+background:radial-gradient(circle at top,#ff4d6d,#2b0033,#000);
+color:#fff;
+overflow:hidden
 }
- * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-tap-highlight-color: transparent; }
-   body { background: var(--bg); color: white; overflow-x: hidden; height: 100vh; width: 100vw; }
-   section { height: 100vh; width: 100vw; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; overflow: hidden; }
-   section.active { display: flex; animation: fadeIn 0.8s ease-out forwards; }
-   @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-   .nav-info { position: fixed; width: 100%; top: 0; padding: 15px; display: flex; justify-content: space-between; font-size: 12px; z-index: 100; opacity: 0.8; }
-   .btn { background: var(--pink); border: none; padding: 15px 35px; border-radius: 50px; color: white; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px var(--pink); margin-top: 20px; text-decoration: none; }
-   .btn:hover { transform: scale(1.1); box-shadow: 0 0 25px var(--pink); }
-   .teddy { font-size: 80px; animation: bounce 2s infinite ease-in-out; display: inline-block; }
-   @keyframes bounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(5deg); } }
-   .flags { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-around; z-index: 10; }
-   .flag { font-size: 24px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
-   @keyframes swing { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
-   .floating-heart { position: absolute; color: var(--pink); animation: floatUp 4s linear infinite; z-index: 1; pointer-events: none; }
-   @keyframes floatUp { from { transform: translateY(100vh) scale(0.5); opacity: 1; } to { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
-   .cake { position: relative; font-size: 100px; margin: 20px; }
-   .candle-flame { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 30px; animation: flicker 0.5s infinite alternate; }
-   @keyframes flicker { from { opacity: 0.8; transform: translateX(-50%) scale(1); } to { opacity: 1; transform: translateX(-50%) scale(1.2); } }
-   .balloons-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-   .balloon { font-size: 60px; cursor: pointer; transition: 0.2s; animation: floatUp 6s infinite ease-in-out; }
-   .card { background: var(--white); color: #333; padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); max-width: 300px; transform: rotate(-2deg); animation: cardIn 1s ease-out; }
-   @keyframes cardIn { from { transform: translateY(100px) rotate(10deg); opacity: 0; } to { transform: translateY(0) rotate(-2deg); opacity: 1; } }
-   .slider { display: flex; overflow-x: auto; gap: 15px; width: 90%; padding: 20px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
-   .slider::-webkit-scrollbar { display: none; }
-   .slide-card { flex: 0 0 250px; background: rgba(255,255,255,0.1); padding: 40px 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); scroll-snap-align: center; }
-   .game-area { width: 100%; height: 60vh; background: rgba(0,0,0,0.2); border-radius: 20px; position: relative; overflow: hidden; border: 2px dashed var(--pink); }
-   .falling-heart { position: absolute; cursor: pointer; font-size: 30px; transition: 0.1s; }
-   .music-player { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; width: 300px; }
-   .song-btn { display: block; width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 10px; background: rgba(255,255,255,0.2); color: white; cursor: pointer; transition: 0.3s; }
-   .song-btn.playing { background: var(--accent); }
-   footer { position: absolute; bottom: 20px; width: 100%; font-size: 12px; opacity: 0.7; }
-   </style>
-   </head>
-   <body>
-   <div class="nav-info">
-   <div>📸 @your_instagram_username</div>
-   <div>Made with ❤️ by Sivasingh</div>
-   </div>
-   <div class="flags">
-   <div class="flag">🚩</div><div class="flag">🚩</div><div class="flag">🚩</div><div class="flag">🚩</div><div class="flag">🚩</div>
-   </div>
-   <section id="s1" class="active">
-   <div class="teddy">🧸</div>
-   <h1 style="font-size: 2.5rem; margin: 20px 0;">A Cutiepie Was Born Today 💖</h1>
-   <p style="font-style: italic; opacity: 0.9;">Yes, it’s YOU Nisha! A little surprise awaits…</p>
-   <button class="btn" onclick="next(1)">🎁 Start the Surprise</button>
-   </section>
-   <section id="s2">
-   <h2 style="font-size: 3rem;">You are a Cutiee 💕</h2>
-   <div id="heart-confetti"></div>
-   <button class="btn" onclick="next(2)">Next →</button>
-   </section>
-   <section id="s3">
-   <div class="cake" id="cake">
-   <div class="candle-flame" id="flame">🔥</div>
-   🎂
-   </div>
-   <h2 style="font-size: 2rem;">Happy Birthday Nisha 🎉</h2>
-   <button class="btn" id="blowBtn" onclick="blowCandle()">Blow the Candle</button>
-   </section>
-   <section id="s4">
-   <h2>Pop all 4 balloons 🎈</h2>
-   <div class="balloons-container" id="balloons">
-   <div class="balloon" onclick="pop(this)">🎈</div>
-   <div class="balloon" onclick="pop(this)">🎈</div>
-   <div class="balloon" onclick="pop(this)">🎈</div>
-   <div class="balloon" onclick="pop(this)">🎈</div>
-   </div>
-   </section>
-   <section id="s5">
-   <div class="card">
-   <p style="font-size: 1.2rem; line-height: 1.6; color: #d63384;">Lots of love for you Nisha ❤️
-   
-   May your smile always shine brighter than the stars.
-   Stay happy, stay blessed.</p>
-   </div>
-   <button class="btn" onclick="location.reload()">Replay Animation</button>
-   <button class="btn" onclick="next(5)" style="background:transparent; box-shadow:none; border: 1px solid white;">Next</button>
-   </section>
-   <section id="s6">
-   <h3>Some Sweet Moments 💞</h3>
-   <p>(Swipe the cards)</p>
-   <div class="slider">
-   <div class="slide-card">🧸
-   Our Bond</div>
-   <div class="slide-card">🌹
-   Pure Magic</div>
-   <div class="slide-card">💖
-   Endless Joy</div>
-   <div class="slide-card">✨
-   Special Soul</div>
-   </div>
-   <button class="btn" onclick="next(6)">Go to Game 💘</button>
-   </section>
-   <section id="s7">
-   <h3>Catch My Heart 💘</h3>
-   <p>Score 10 to win!</p>
-   <div id="score" style="font-weight: bold; margin: 10px;">Hearts: 0</div>
-   <div class="game-area" id="gameArea"></div>
-   </section>
-   <section id="s8">
-   <h3>For Your Ears Only 🎵</h3>
-   <div class="music-player">
-   <button class="song-btn" onclick="playMusic(1, this)">🎵 Romantic Vibe 1</button>
-   <button class="song-btn" onclick="playMusic(2, this)">🎵 Birthday Special</button>
-   <button class="song-btn" onclick="playMusic(3, this)">🎵 Sweet Melody</button>
-   </div>
-   <button class="btn" onclick="next(8)">Final Surprise</button>
-   </section>
-   <section id="s9">
-   <div class="teddy">👋🧸</div>
-   <h2>Once again,
-   Happy Birthday Nisha 💖</h2>
-   <p>Hope you loved this surprise!</p>
-   <button class="btn" onclick="next(0)">Replay Website</button>
-   <footer>
-   <p>Made with love by Sivasingh</p>
-   <p>📸 @your_instagram_username</p>
-   </footer>
-   </section>
-   <audio id="audio1" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-   <audio id="audio2" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-   <audio id="audio3" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
-   <script>
-   function next(current) {
-   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-   const nextId = current === 0 ? 's1' : 's' + (current + 1);
-   document.getElementById(nextId).classList.add('active');
-   if(nextId === 's2') startHearts();
-   if(nextId === 's7') startGame();
-   }
-   function startHearts() {
-   for(let i=0; i<20; i++) {
-   setTimeout(() => {
-   const h = document.createElement('div');
-   h.className = 'floating-heart';
-   h.innerHTML = '💖';
-   h.style.left = Math.random() * 100 + 'vw';
-   h.style.animationDuration = (Math.random() * 2 + 2) + 's';
-   document.body.appendChild(h);
-   setTimeout(() => h.remove(), 4000);
-   }, i * 200);
-   }
-   }
-   function blowCandle() {
-   document.getElementById('flame').style.display = 'none';
-   document.getElementById('cake').innerHTML += '<div style="font-size:20px">✨🎉</div>';
-   setTimeout(() => next(3), 1500);
-   }
-   let popped = 0;
-   function pop(el) {
-   el.innerHTML = '💥';
-   el.style.transform = 'scale(1.5)';
-   setTimeout(() => el.style.opacity = '0', 200);
-   popped++;
-   if(popped === 4) setTimeout(() => next(4), 1000);
-   }
-   let score = 0;
-   function startGame() {
-   const area = document.getElementById('gameArea');
-   const scoreEl = document.getElementById('score');
-   const interval = setInterval(() => {
-   if(score >= 10) {
-   clearInterval(interval);
-   next(7);
-   return;
-   }
-   const h = document.createElement('div');
-   h.className = 'falling-heart';
-   h.innerHTML = '💖';
-   h.style.left = Math.random() * 80 + 10 + '%';
-   h.style.top = '-50px';
-   area.appendChild(h);
-   let pos = -50;
-   const fall = setInterval(() => {
-   pos += 3;
-   h.style.top = pos + 'px';
-   if(pos > 500) { clearInterval(fall); h.remove(); }
-   }, 20);
-   h.onclick = () => {
-   score++;
-   scoreEl.innerText = 'Hearts: ' + score;
-   h.innerHTML = '🌸';
-   setTimeout(() => h.remove(), 100);
-   clearInterval(fall);
-   };
-   }, 800);
-   }
-   let currentAudio = null;
-   function playMusic(id, btn) {
-   if(currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
-   document.querySelectorAll('.song-btn').forEach(b => b.classList.remove('playing'));
-   currentAudio = document.getElementById('audio' + id);
-   currentAudio.play();
-   btn.classList.add('playing');
-   }
-   setInterval(() => {
-   const leaf = document.createElement('div');
-   leaf.innerHTML = '💖';
-   leaf.style.position = 'fixed';
-   leaf.style.left = Math.random() * 100 + 'vw';
-   leaf.style.top = '-20px';
-   leaf.style.fontSize = '10px';
-   leaf.style.zIndex = '0';
-   leaf.style.transition = '4s linear';
-   document.body.appendChild(leaf);
-   setTimeout(() => { leaf.style.top = '110vh'; leaf.style.transform = 'rotate(360deg)'; }, 100);
-   setTimeout(() => leaf.remove(), 4100);
-   }, 2000);
-   </script>
-   </body>
-   </html>
+section{
+width:100vw;
+height:100vh;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px
+}
+section.active{display:flex}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:10px 15px;
+font-size:13px;
+z-index:99
+}
+header span{opacity:.8}
+
+button{
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#ff5fa2,#ff2e63);
+color:white;
+font-size:16px;
+box-shadow:0 0 15px #ff5fa2;
+transition:.3s
+}
+button:active{transform:scale(.95)}
+
+.teddy{font-size:90px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+.heart{
+position:absolute;
+color:pink;
+animation:float 5s linear infinite;
+font-size:20px
+}
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0}
+100%{transform:translateY(-10vh);opacity:1}
+}
+
+.card{
+background:#fff;
+color:#000;
+border-radius:20px;
+padding:25px;
+max-width:340px;
+box-shadow:0 0 25px rgba(255,105,180,.7);
+animation:fade 1s
+}
+@keyframes fade{from{opacity:0;transform:scale(.9)}to{opacity:1}}
+
+.slider{
+display:flex;
+gap:15px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+width:100%
+}
+.slide{
+min-width:260px;
+height:350px;
+background:linear-gradient(#ffb3c6,#fff);
+border-radius:20px;
+scroll-snap-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:#ff2e63
+}
+
+.balloon{
+width:70px;height:90px;
+border-radius:50%;
+background:red;
+margin:10px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:30px
+}
+
+#catchGame{
+position:relative;
+width:100%;
+height:60vh;
+overflow:hidden
+}
+.catchHeart{
+position:absolute;
+font-size:30px;
+animation:drop 3s linear
+}
+@keyframes drop{
+from{top:-40px}
+to{top:100%}
+}
+
+.music button{margin:8px}
+
+footer{
+position:absolute;
+bottom:10px;
+font-size:13px;
+opacity:.8
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<span>📸 @your_instagram_username</span>
+<span>Made with ❤️ by Sivasingh</span>
+</header>
+
+<section id="s1" class="active">
+<div class="teddy">🧸</div>
+<h1>A Cutiepie Was Born Today 💖</h1>
+<p>Yes, it’s YOU Nisha! A little surprise awaits…</p>
+<button onclick="next()">🎁 Start the Surprise</button>
+</section>
+
+<section id="s2">
+<h1>You are a Cutiee 💕</h1>
+<button onclick="next()">Next →</button>
+</section>
+
+<section id="s3">
+<h1>🎂 Happy Birthday Nisha 🎉</h1>
+<p>Make a wish & blow the candle</p>
+<button onclick="next()">Blow the Candle</button>
+<audio id="bgm" src="birthday.mp3" loop></audio>
+</section>
+
+<section id="s4">
+<h2>Pop all balloons 🎈</h2>
+<div>
+<div class="balloon" onclick="pop(this)">🎈</div>
+<div class="balloon" onclick="pop(this)">🎈</div>
+<div class="balloon" onclick="pop(this)">🎈</div>
+<div class="balloon" onclick="pop(this)">🎈</div>
+</div>
+</section>
+
+<section id="s5">
+<div class="card">
+<h3>For You 💌</h3>
+<p>
+Lots of love for you Nisha ❤️<br>
+May your smile always shine brighter than the stars.<br>
+Stay happy, stay blessed.
+</p>
+<button onclick="next()">Next</button>
+</div>
+</section>
+
+<section id="s6">
+<h2>Some Sweet Moments 💞</h2>
+<div class="slider">
+<div class="slide">💑</div>
+<div class="slide">💖</div>
+<div class="slide">🌹</div>
+</div>
+<button onclick="next()">Next</button>
+</section>
+
+<section id="s7">
+<h2>Catch My Heart 💘</h2>
+<p>Tap hearts before they fall</p>
+<div id="catchGame"></div>
+<button onclick="next()">Next</button>
+</section>
+
+<section id="s8">
+<h2>Music for You 🎶</h2>
+<div class="music">
+<button onclick="playSong(0)">Song 1</button>
+<button onclick="playSong(1)">Song 2</button>
+<button onclick="playSong(2)">Song 3</button>
+</div>
+<audio class="song" src="song1.mp3"></audio>
+<audio class="song" src="song2.mp3"></audio>
+<audio class="song" src="song3.mp3"></audio>
+<button onclick="next()">Next</button>
+</section>
+
+<section id="s9">
+<div class="teddy">🧸</div>
+<h2>Once again, Happy Birthday Nisha 💖</h2>
+<p>Hope you loved this surprise!</p>
+<button onclick="location.reload()">Replay Website</button>
+<footer>Made with love by Sivasingh</footer>
+</section>
+
+<script>
+let current=1
+function next(){
+document.getElementById("bgm").play()
+document.querySelector("section.active").classList.remove("active")
+current++
+document.getElementById("s"+current).classList.add("active")
+}
+
+let popped=0
+function pop(el){
+el.style.visibility="hidden"
+popped++
+if(popped==4)next()
+}
+
+function spawnHeart(){
+let h=document.createElement("div")
+h.className="catchHeart"
+h.innerHTML="💖"
+h.style.left=Math.random()*90+"%"
+h.onclick=()=>h.remove()
+document.getElementById("catchGame").appendChild(h)
+setTimeout(()=>h.remove(),3000)
+}
+setInterval(spawnHeart,700)
+
+let songs=document.querySelectorAll(".song")
+function playSong(i){
+songs.forEach(s=>{s.pause();s.currentTime=0})
+songs[i].play()
+}
+</script>
+
+</body>
+</html>
